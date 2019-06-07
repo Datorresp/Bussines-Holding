@@ -11,11 +11,13 @@ public class Cubicle {
     private String EmployeeName;
     private long extention;
     private String position;
+    private String email;
 
-    public Cubicle(String EmployeeName, long extention, String position) {
+    public Cubicle(String EmployeeName, long extention, String position, String email) {
         this.EmployeeName = EmployeeName;
         this.extention = extention;
         this.position = position;
+        this.email = email;
     }
 
     public String getEmployeeName() {
@@ -41,6 +43,13 @@ public class Cubicle {
     public void setPosition(String position) {
         this.position = position;
     }
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
 }

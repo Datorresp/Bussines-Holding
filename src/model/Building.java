@@ -16,6 +16,16 @@ public class Building {
         
         cubicles = new Cubicle[buildingNumber][20];
     }
+
+    public int getBuildingNumber() {
+        return buildingNumber;
+    }
+
+    public void setBuildingNumber(int buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+    
+    
     
     public String routeL(String employeeName){
         
@@ -145,6 +155,84 @@ public class Building {
             }
         }
         return msj;
+    }
+    
+    public String spiralXColumn(String position){
+        
+        
+	String msj = "";
+	boolean downRight = false;
+	boolean lastUp = false;
+	boolean upLeft = false;
+	int adder = 0;
+	int receiver = 0;
+
+	for(int i = 0; i < cubicles.length;i++){
+		
+		for(int j = 0; i < cubicles[0].length-adder;  j++){
+                    
+                    if(cubicles[j][i].getPosition().equals(position)){
+                        
+                        msj += cubicles[j][i].getEmail();
+                    }
+                    
+                    downRight = true;
+                }
+	
+                if(downRight == true){
+                    
+                    for(int k = 1; k < cubicles[0].length-adder; k++){
+                        
+                        if(cubicles[cubicles.length][k].getPosition().equals(position)){
+                            
+                            msj += cubicles[cubicles.length][k].getEmail();
+                            
+			}
+                        
+                    lastUp = true;
+                    
+                    }
+                }
+
+                if(lastUp == true){
+                    
+                    for(int l = cubicles.length; l > adder; l--){
+
+                        if(cubicles[l][cubicles.length].getPosition().equals(position)){
+                            
+                            msj += cubicles[l][cubicles.length].getEmail();
+                            
+                        }
+                        
+                            upLeft = true;
+                            
+                    }
+                }
+
+                if(upLeft == true){
+                    
+                    for(int m = cubicles.length-adder; m > receiver ; m--){
+                        
+                        if(cubicles[receiver][m].getPosition().equals(position)){
+                            
+                            msj += cubicles[receiver][m].getEmail();
+                            
+                        }
+                    }
+                }
+
+                downRight = false;
+                lastUp = false;
+                upLeft = false;
+                adder++;
+                receiver++;
+
+	}
+
+
+	return msj;
+
+
     }
 
 }

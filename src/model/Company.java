@@ -111,8 +111,7 @@ public abstract class Company {
         this.legalRepresentative = legalRepresentative;
     }
     
-    
-    
+    public abstract String toString();
     
     
 }

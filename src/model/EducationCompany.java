@@ -103,5 +103,12 @@ public class EducationCompany extends ServiceCompany implements Taxable{
 
         return porcentaje;
     }
+
+    @Override
+    public String toString() {
+        return "EducationCompany{" + "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + "noMen=" + noMen + ", acreeditedYear=" + acreeditedYear + ", positionSaber11=" + positionSaber11 + ", positionSaberPro=" + positionSaberPro + ", principalName=" + principalName + ", educationSector=" + educationSector + ", quantity=" + quantity + ", amountStudentsStratum1and2=" + amountStudentsStratum1and2 + '}';
+    }
+    
+    
     
 }

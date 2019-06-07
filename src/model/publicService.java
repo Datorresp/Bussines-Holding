@@ -45,6 +45,13 @@ public class publicService extends Company{
     public void setTotalSubsOneAndTwo(int totalSubsOneAndTwo) {
         this.totalSubsOneAndTwo = totalSubsOneAndTwo;
     }
+
+    @Override
+    public String toString() {
+        return "publicService{" + "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + "typeA=" + typeA + ", totalSubs=" + totalSubs + ", totalSubsOneAndTwo=" + totalSubsOneAndTwo + '}';
+    }
+
+    
      
     
      

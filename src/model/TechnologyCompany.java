@@ -9,6 +9,11 @@ public class TechnologyCompany extends ServiceCompany{
         super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative);
         this.services = services;
     }
+
+    @Override
+    public String toString() {
+        return "TechnologyCompany{" + "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + '}';
+    }
     
     
 }

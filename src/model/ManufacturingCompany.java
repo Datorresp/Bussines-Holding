@@ -28,7 +28,7 @@ public class ManufacturingCompany extends Company{
         
         for (int i = 0; i < products.size(); i++) {
             
-            msj += "los productos son: " + products.get(i).toString();
+            msj += "produts: " + products.get(i).toString();
         }
         
         return  msj;
@@ -36,7 +36,7 @@ public class ManufacturingCompany extends Company{
 
     @Override
     public String toString() {
-        return  "El nombre de comercio es:" + getName() + " productos=" + products + " El nit es:" + getNit() +" La direccion es:" + getAdress()+  " El numero  celular es:" + getPhone()+ " La cantidad de empleados es:" + getEmployees() + " La cantidad de activos es:" + getValuesAssets() + "La fecha de creacion: " + getConstitutionDate() + "El tipo de organizacion es:" + getType() + " El nombre legal es:" + getType() + ShowProducts();
+        return "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + getAdress()+ ShowProducts();
     }
     
     
