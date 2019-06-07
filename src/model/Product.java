@@ -67,6 +67,11 @@ public class Product {
     public void setI1(Invima i1) {
         this.i1 = i1;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" + "name=" + name + ", code=" + code + ", waterAmount=" + waterAmount + ", units=" + units + ", s1=" + s1 + ", i1=" + i1 + '}';
+    }
     
     
 }

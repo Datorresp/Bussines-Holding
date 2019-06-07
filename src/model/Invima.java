@@ -75,7 +75,7 @@ public class Invima extends ManufacturingCompany implements Consuption{
 
                 trees = 25;
 
-            }else if(p.getWaterAmount()  >  800){
+            }else if(p.getWaterAmount()  >   800){
 
                 trees = 200;        
             }
