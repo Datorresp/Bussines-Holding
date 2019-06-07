@@ -60,27 +60,28 @@ public class Invima extends ManufacturingCompany implements Consuption{
 
     @Override
     public int WaterXTree() {
-        int amountTree = 0;
+        
+        int trees = 0;
 
         for(int i = 0; i < getProducts().size(); i++){
             
-            Product m = getProducts().get(i);
+            Product p = getProducts().get(i);
             
-            if(m.getWaterAmount() > 1 && m.getWaterAmount()  < 140){
+            if(p.getWaterAmount() > 1   &&   p.getWaterAmount() < 140){
 
-                amountTree = 6;
+                trees = 6;
 
-            }else if(m.getWaterAmount()  >41&& m.getWaterAmount()  < 800){
+            }else if(p.getWaterAmount() > 41  &&  p.getWaterAmount() < 800){
 
-                amountTree = 25;
+                trees = 25;
 
-            }else if(m.getWaterAmount() >800){
+            }else if(p.getWaterAmount()  >  800){
 
-                amountTree = 200;        
+                trees = 200;        
             }
         }
 
-        return amountTree;
+        return trees;
     }
     
     
