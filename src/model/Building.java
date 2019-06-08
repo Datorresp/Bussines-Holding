@@ -228,11 +228,37 @@ public class Building {
                 receiver++;
 
 	}
-
-
 	return msj;
+    }
+    
+    public String routeX(String employeeName){
+        
+        String msj ="";
 
+        
+         for(int i = 0; i < cubicles.length;i++){
+             
+             if(cubicles[i][i].getEmployeeName().equals(employeeName)){
+                 
+                 msj += "la extencion del empleado es: " + cubicles[i][i].getExtention();
+                 
+             }
+         }
 
+        
+          for(int j = 0; j < cubicles.length;j++){
+              
+            if((cubicles.length % 2 == 0) || (cubicles.length % 2 != 0 && j != cubicles.length/2)){
+                
+                if(cubicles[j][cubicles.length-1-j].getEmployeeName().equals(employeeName)){
+                    
+                    msj += "la extencion del empleado es: " + cubicles[j][cubicles.length-1-j].getExtention();
+                    
+               }
+            }
+          }
+
+        return msj;
     }
 
 }
