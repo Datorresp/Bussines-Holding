@@ -7,7 +7,7 @@
 
 package model;
 
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -41,12 +41,65 @@ public class Holding {
         return msj;
     }
     
-    public String showInfo(){
+    
+
+    @Override
+    public String toString() {
+        return "Holding{" + "name=" + name + ", nit=" + nit + ", companies=" + companies()+ '}';
+    }
+    
+    public String companies(){
         
         String msj = " ";
         
-        
+        for (int i = 0; i < com.size(); i++) {
+            
+            msj= com.get(i).toString();
+        }
         
         return msj;
     }
+    
+    public void addCompanyWithPolls(Company company, ArrayList<Poll> polls){
+
+        com.add(company);
+        ((ServiceCompany)company).addPolls(polls);
+
+    }
+
+    public String comaniesNames(){
+        
+        String msj = "";
+
+	for(int i = 0; i < com.size();i++){
+
+            if(com.get(i) instanceof ServiceCompany){
+
+                 msj += com.get(i).getName();
+
+            }
+        }
+
+        return msj;
+
+    }
+    
+    public String Products(String nombre){
+        
+        String msj = "";
+
+        for(int i = 0; i < com.size();i++){
+
+             if(com.get(i) instanceof ManufacturingCompany){
+
+                
+                 if(com.get(i).getName().equals(nombre)){
+
+                     msj += com.get(i).toString();
+
+               }
+           }
+       }
+        return msj;
+   }
 }
