@@ -260,5 +260,66 @@ public class Building {
 
         return msj;
     }
+    
+    public String espriral(String position){
+        
+        String msj = "";
+	int file1 = 0;
+	int file2 = cubicles.length-1;
+	int column1 = 0;
+	int column2 = cubicles.length-1;
 
+	while(file1 < file2 && column1 < column2){
+
+            for(int i = file1 ; i < file2 ;i++){
+                    
+                if(cubicles[i][column1].getPosition().equals(position)){
+                            
+                    msj += "la extencion del empleado es: " + cubicles[i][column1].getEmail();
+                        
+                }
+            }
+
+            column1++;
+            
+            for(int j = column1 ; j < column2 ; j++){
+			
+                if(cubicles[file2][j].getPosition().equals(position)){
+                    
+                    msj += "la extencion del empleado es: " + cubicles[file2][j].getEmail();
+		}
+            }
+		
+            file2--;
+
+		
+            for(int k = file2; k >= file1 ; k--){
+		
+                if(cubicles[k][column2].getPosition().equals(position)){
+		
+                    msj += "la extencion del empleado es: " + cubicles[k][column2].getEmail();
+	
+                }
+		
+            }
+		
+            column2--;
+
+		
+            for(int l = column2 ; l >= column1 ; l--){
+			
+                if(cubicles[file1][l].getPosition().equals(position)){
+				
+                    msj += "la extencion del empleado es: " + cubicles[file1][l].getEmail();
+			
+                }
+		
+            }
+		
+            file1++;
+
+	}
+        return msj;
+    }
+        
 }

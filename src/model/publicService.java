@@ -5,7 +5,7 @@ package model;
  *
  * @author diegoandrestorres
  */
-public class publicService extends Company{
+public class publicService extends Company implements Taxable{
     
      public static final String SEWERAGE = "Alcantarillado";
      public static final String ENERGY = "Energia";
@@ -50,6 +50,24 @@ public class publicService extends Company{
     public String toString() {
         return "publicService{" + "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + "typeA=" + typeA + ", totalSubs=" + totalSubs + ", totalSubsOneAndTwo=" + totalSubsOneAndTwo + '}';
     }
+
+    @Override
+    public double calculateTaxes() {
+        double proCultura = 0.0;
+
+        proCultura += 40 - (totalSubs/100);
+
+        if(proCultura < 0){
+
+        proCultura = 0.0;
+
+    }
+
+    return proCultura;
+
+
+    }
+    
 
     
      
