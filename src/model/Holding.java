@@ -130,6 +130,16 @@ public class Holding {
         return msj;
 
     }
+    public String showInfo(){
+        String msj = "";
+
+            for(int i = 0; i < com.size(); i++){
+
+            msj += com.get(i).toString();
+
+            }
+        return msj;
+    }
     
     public String Products  (String nombre){
         

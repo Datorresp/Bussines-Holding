@@ -53,6 +53,10 @@ public class publicService extends Company implements Taxable{
         return "publicService{" + "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + "typeA=" + typeA + ", totalSubs=" + totalSubs + ", totalSubsOneAndTwo=" + totalSubsOneAndTwo + '}';
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public double calculateTaxes() {
         double proCultura = 0.0;
