@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 package model;
 
@@ -77,23 +71,37 @@ public class Holding {
         return msj;
     }
     
-    public void addCompanyPolls(Company companyName, Poll polls){
+    public void addCompanyPolls(String companyName,Company company, Poll polls){
 
-        com.add(companyName);
-        ((ServiceCompany)companyName).addPolls(polls);
+        for (int i = 0; i < com.size(); i++) {
+            
+            if (com.get(i).name.equals(companyName)) {
+                
+                company = com.get(i);
+                ((ServiceCompany)company).addPolls(polls);
+            }
+        }
+        
     }
     
-    public void addCompanyProducts(Company companyName,Product p){
+    public void addCompanyProducts(String companyName, Company company,Product p){
 
-        com.add(companyName);
-        ((ManufacturingCompany) companyName).addProduct(p);
+        for (int i = 0; i < com.size(); i++) {
+            
+            if (com.get(i).name.equals(companyName)) {
+                
+                company = com.get(i);
+                ((ManufacturingCompany) company).addProduct(p);
+            }
+        }
+        
     }
     @Override
     public String toString() {
-        return "Holding{" + "name=" + name + ", nit=" + nit + ", companies=" + companies()+ '}';
+        return "Holding{" + "name=" + name + ", nit=" + nit + ", companies=" + showCompanies()+ '}';
     }
     
-    public String companies(){
+    public String showCompanies(){
         
         String msj = " ";
         
@@ -215,7 +223,7 @@ public class Holding {
         return msj;
     }
     
-    public String showBuildingE(String companyName,String employeeName){
+    public String routeE(String companyName,String employeeName){
         String msj = "";
 
         for(int i = 0; i < com.size();i++){

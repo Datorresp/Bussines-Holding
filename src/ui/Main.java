@@ -1,9 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ui;
+import java.util.Scanner;
+import java.util.ArrayList;
+import model.*;
+
+
 
 /**
  *
@@ -11,11 +12,27 @@ package ui;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
+    private Holding hold;
+    private Scanner reader;
+
+    public Main(){
+      init();
+      reader = new Scanner(System.in);
+    }
+
+
     public static void main(String[] args) {
-        // TODO code application logic here
+    Main m = new Main();
+    m.showMenu();
+}
+
+
+    private void init() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void showMenu() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
