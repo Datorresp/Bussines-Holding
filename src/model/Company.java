@@ -17,19 +17,19 @@ public abstract class Company {
     public static final char EST_INSU_ESTATE_SERV = 'H';
     public static final char SOCIAL_COMUNALS = 'I';
 
-    protected String name;
-    protected String nit;
-    protected String adress;
-    protected long phone;
-    protected int employees;
-    protected double valuesAssets;
-    protected String constitutionDate;
-    protected char type;
-    protected String legalRepresentative;
+    private  String name;
+    private String nit;
+    private String adress;
+    private String phone;
+    private int employees;
+    private double valuesAssets;
+    private String constitutionDate;
+    private char type;
+    private String legalRepresentative;
     
-    protected Building build;
+    private Building build;
 
-    public Company(String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+    public Company(String name,String nit, String adress,String phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative,Building build) {
         this.name = name;
         this.nit = nit;
         this.adress = adress;
@@ -67,11 +67,11 @@ public abstract class Company {
         this.adress = adress;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

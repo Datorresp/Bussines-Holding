@@ -12,13 +12,15 @@ public class Invima extends ManufacturingCompany implements Consuption{
     private String expiration;
     private char modality;
 
-    public Invima(String sanitaryRegistration, String status, String expiration, char modality, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+    public Invima(String name, String nit, String adress, String phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build, String sanitaryRegistration, String status, String expiration, char modality) {
         super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
         this.sanitaryRegistration = sanitaryRegistration;
         this.status = status;
         this.expiration = expiration;
         this.modality = modality;
     }
+
+   
  
     public String getSanitaryRegistration() {
         return sanitaryRegistration;

@@ -14,18 +14,14 @@ public class TechnologyCompany extends ServiceCompany implements Consuption{
     
     private ArrayList <String> services;
 
-    public TechnologyCompany(int consuptiomKilowatts, String service, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+    public TechnologyCompany(String name, String nit, String adress, String phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build, int consuptiomKilowatts, String service) {
         super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
         this.consuptiomKilowatts = consuptiomKilowatts;
         this.service = service;
         
-        services = new ArrayList<>();
-	services.add(CAPATATION);
-        services.add(INFRASTRUCTURE);
-	services.add(SOFTWARE_DEVELOP);
-        services.add(SERVICE_OF_PLATAFORM);
-	services.add(SERVICE_OF_SOFTWARE);
     }
+
+    
 
     
 

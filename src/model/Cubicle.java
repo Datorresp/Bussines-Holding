@@ -20,6 +20,7 @@ public class Cubicle {
         this.position = position;
         this.email = email;
         this.disponibility = disponibility;
+        
     }
 
     public String getEmployeeName() {

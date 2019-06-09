@@ -8,9 +8,15 @@ public class ManufacturingCompany extends Company{
     
     private ArrayList <Product> products;
 
-    public ManufacturingCompany(String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+    public ManufacturingCompany(String name, String nit, String adress, String phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
         super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
-        products = new ArrayList<>();
+    }
+
+    
+    public void addProduct(ArrayList<Product> pro){
+
+        products = pro;
+
     }
     
     
@@ -36,20 +42,9 @@ public class ManufacturingCompany extends Company{
 
     @Override
     public String toString() {
-        return "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + getAdress()+ ShowProducts();
+        return "name=" + super.getName() + ", nit=" + super.getNit() + ", adress=" + super.getAdress() + ", phone=" + super.getPhone() + ", employees=" + super.getEmployees() + ", valuesAssets=" + super.getValuesAssets() + ", constitutionDate=" + super.getConstitutionDate() + ", type=" + super.getType() + ", legalRepresentative=" + super.getLegalRepresentative() + getAdress()+ ShowProducts();
     }
     
-    public void addProduct(Product pro){
-
-        for (int i = 0; i < products.size(); i++) {
-            
-            if (products.get(i) == null) {
-                
-                products.add(pro);
-            }
-        }
-    
-    }
     
     
      

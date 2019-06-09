@@ -1,66 +1,38 @@
-
 package model;
+
 import java.util.ArrayList;
 
-/**
- *
- * @author diegoandrestorres
- */
 public class ServiceCompany extends Company{
-    
-    private ArrayList<Poll> polls;
 
-    public ServiceCompany(String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+//Relaciones
+private ArrayList<Poll> polls;
+
+    public ServiceCompany(String name, String nit, String adress, String phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
         super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
+        
     }
 
-    public void addPolls(Poll polls1){
-        
-        for (int i = 0; i < polls.size(); i++) {
-            
-            if (polls.get(i)==null) {
-                
-                polls.add(polls1);
-            }
-        }
-        
-    }
+
+
     
-    public String getPoll(){
-        
-        String msj = "";
 
-        for(int i = 0 ; i < polls.size();i++){
-
-            msj += polls.get(i).toString();
-
-        }
-        return msj;
+    public void addPolls(ArrayList<Poll> client){
+        polls = client;
     }
+
 
     @Override
     public String toString() {
-        return "ServiceCompany{" + "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + '}';
+        return "ServiceCompany{" + "name=" + super.getName() + ", nit=" + super.getNit() + ", adress=" + super.getAdress() + ", phone=" + super.getPhone() + ", employees=" + super.getEmployees() + ", valuesAssets=" + super.getValuesAssets() + ", constitutionDate=" + super.getConstitutionDate() + ", type=" + super.getType() + ", legalRepresentative=" + super.getLegalRepresentative() + getAdress() + '}';
     }
 
-    public String promediateOfThis(){
 
-        String msj = "";
-        int service = 0;
-        int answerTime = 0;
-        int relation = 0;
-            for(int i = 0; i < polls.size();i++){
-                
-                service += polls.get(i).getServiceDoIt();
-                answerTime += polls.get(i).getAnswerTime();
-                relation += polls.get(i).getRelationCostXBenefit();
 
-                msj += "Service:" + service + "Answer Time:" + answerTime + "relation:" + relation;
-            }
-        return msj;
+
+
+
+
+
+
 
     }
-
-    
-    
-}

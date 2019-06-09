@@ -37,7 +37,8 @@ public class Main {
     }
 
     private void init() {
-        
+    
+
     }
 
     private void showMenu() {
@@ -62,50 +63,7 @@ public class Main {
         break;
 
       case 2:
-        createCompanies();
-
-        try {
-  				Thread.sleep(1500);
-  			} catch (InterruptedException e) {
-
-  			}
-        
-        message();
-        break;
-            }
-        }
-    }
-    
-    public void infoClient(){
-        
-        System.out.println(hold.showInfo());
-    }
-
-
-
-    private void createCompanies() {
-        int addCompanies = 0;
-
-      System.out.println("****************************");
-      System.out.println("Choose the type of company:");
-      System.out.println("***********SERVICE**********");
-      System.out.println("1.Education Company");
-      System.out.println("2.Technology Company");
-      System.out.println("3.Public Company");
-      System.out.println("********Manufacture*********");
-      System.out.println("4.Invima");
-      System.out.println("6.Exit");
-      System.out.println("****************************");
-      
-        while(addCompanies != 6){ 
-            
-            addCompanies = reader.nextInt();
-            reader.nextLine();
-
-            switch (addCompanies) {
-
-              case 1:
-              System.out.println("\n");
+        System.out.println("\n");
               System.out.println("\n");
               System.out.println("\n");
               System.out.println("enter the name");
@@ -126,8 +84,7 @@ public class Main {
               System.out.println("\n");
               System.out.println("Type your phone");
 
-              long phone = reader.nextLong();
-              reader.nextLine();
+              String phone = reader.nextLine();
 
               System.out.println("Enter the quantity");
               int employee = reader.nextInt();
@@ -187,8 +144,74 @@ public class Main {
                 Building build = new Building(floors);
                 
                 Company e = new EducationCompany(name,nit,adress,phone,employee,valuesAssets,constitutionDate,type,legalRepresentative,build,noMen,acreeditedYear,positionSaber11,positionSaberPro,principalName,educationSector,quantity, amountStudentsStratum1and2);
-                
-                System.out.println(hold.addCompany(e));
+
+                        System.out.println( "Ingrese las encuestas hechas por los usuarios, 1.SI son 10 encuestas,2.NO son mas de 10 (50)");
+            int userSel = reader.nextInt();
+            reader.nextLine();
+
+            ArrayList<Poll> pollss = new ArrayList<Poll>();
+
+            if(userSel == 1){
+
+              for(int i = 0; i <1; i++){
+              System.out.println("Digite el servicio hecho");
+              int q = reader.nextInt();
+              reader.nextLine();
+
+              System.out.println("Digite el tiempo de respuesta dado");
+              int w = reader.nextInt();
+              reader.nextLine();
+
+              System.out.println("Digite el costo de relacion por beneficio");
+              int x = reader.nextInt();
+              reader.nextLine();
+
+              Poll kjr = new Poll(q,w,x);
+              pollss.add(kjr);
+              hold.addCompanyWithPolls(e,pollss);
+
+              }
+            }
+              hold.addCompanyWithPolls(e,pollss);
+
+
+        
+        message();
+        break;
+            }
+        }
+    }
+    
+    public void infoClient(){
+        
+        System.out.println(hold.showInfo());
+    }
+
+
+
+    private void createCompanies() {
+        int addCompanies = 0;
+
+      System.out.println("****************************");
+      System.out.println("Choose the type of company:");
+      System.out.println("***********SERVICE**********");
+      System.out.println("1.Education Company");
+      System.out.println("2.Technology Company");
+      System.out.println("3.Public Company");
+      System.out.println("********Manufacture*********");
+      System.out.println("4.Invima");
+      System.out.println("6.Exit");
+      System.out.println("****************************");
+      
+        while(addCompanies != 6){ 
+            
+            addCompanies = reader.nextInt();
+            reader.nextLine();
+
+            switch (addCompanies) {
+
+              case 1:
+              
               break;
             }
         }

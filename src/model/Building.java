@@ -10,12 +10,22 @@ public class Building {
     private int buildingNumber;
     
     private Cubicle[][] cubicles;
+    
+    public final void inicializatedCub(){
+        for (int i = 0; i < cubicles.length;i++) {
+            for (int j = 0; j < cubicles[0].length; j++) {
+                cubicles[i][j] = new Cubicle ("",68 + i +j,"","",false);
+            }
+        }
+    }
 
     public Building(int buildingNumber) {
         this.buildingNumber = buildingNumber;
-        
         cubicles = new Cubicle[buildingNumber][20];
-    }
+        inicializatedCub();
+    }   
+    
+    
 
     public int getBuildingNumber() {
         return buildingNumber;

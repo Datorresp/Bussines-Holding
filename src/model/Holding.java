@@ -19,6 +19,7 @@ public class Holding {
         this.name = name;
         this.nit = nit;
         this.bu = bu;
+        com = new ArrayList<>();
     }
 
     public String getName() {
@@ -45,57 +46,15 @@ public class Holding {
         this.bu = bu;
     }
 
-    public ArrayList<Company> getCom() {
-        return com;
-    }
-
-    public void setCom(ArrayList<Company> com) {
-        this.com = com;
-    }
-    
      
     
-    public String addCompany(Company comp){
-        
-        String msj = " ";
-        boolean found = false;
-        
-        for (int i = 0; i < com.size() && !found; i++) {
-            
-            if (com.get(i) == null) {
-                
-                com.add(comp);
-                msj += " Se ha creado la compañia" + "\n";
-            }
-        }
-        return msj;
-    }
-    
-    public void addCompanyPolls(String companyName,Company company, Poll polls){
+    public boolean addCompany(Company c){
 
-        for (int i = 0; i < com.size(); i++) {
-            
-            if (com.get(i).name.equals(companyName)) {
-                
-                company = com.get(i);
-                ((ServiceCompany)company).addPolls(polls);
-            }
-        }
-        
-    }
-    
-    public void addCompanyProducts(String companyName, Company company,Product p){
+      return com.add(c);
 
-        for (int i = 0; i < com.size(); i++) {
-            
-            if (com.get(i).name.equals(companyName)) {
-                
-                company = com.get(i);
-                ((ManufacturingCompany) company).addProduct(p);
-            }
-        }
-        
     }
+
+
     @Override
     public String toString() {
         return "Holding{" + "name=" + name + ", nit=" + nit + ", companies=" + showCompanies()+ '}';
@@ -112,24 +71,7 @@ public class Holding {
         
         return msj;
     }
-    
 
-    public String comaniesNames(){
-        
-        String msj = "";
-
-	for(int i = 0; i < com.size();i++){
-
-            if(com.get(i) instanceof ServiceCompany){
-
-                 msj += com.get(i).getName();
-
-            }
-        }
-
-        return msj;
-
-    }
     public String showInfo(){
         String msj = "";
 
@@ -141,24 +83,22 @@ public class Holding {
         return msj;
     }
     
-    public String Products  (String nombre){
-        
-        String msj = "";
+    public void addCompanyProducts(Company k,ArrayList<Product> l){
 
-        for(int i = 0; i < com.size();i++){
+        com.add(k);
+        ((ManufacturingCompany) k).addProduct(l);
 
-             if(com.get(i) instanceof ManufacturingCompany){
 
-                
-                 if(com.get(i).getName().equals(nombre)){
+    }
+    
+    public void addCompanyWithPolls(Company k, ArrayList<Poll> polls){
 
-                     msj += com.get(i).toString();
+        com.add(k);
+        ((ServiceCompany)k).addPolls(polls);
 
-               }
-           }
-       }
-        return msj;
-   }
+
+    }
+    
     
     public void addEmployee(String companyName, String employeeName, String employeePosition, String employeeEmail){
         
@@ -283,4 +223,5 @@ public class Holding {
         }
         return msj;
     }
+
 }

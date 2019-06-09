@@ -15,13 +15,14 @@ public class publicService extends Company implements Taxable{
      private int totalSubs;
      private int totalSubsOneAndTwo;
 
-    public publicService(String typeA, int totalSubs, int totalSubsOneAndTwo, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+    public publicService(String typeA, int totalSubs, int totalSubsOneAndTwo, String name, String nit, String adress, String phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
         super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
         this.typeA = typeA;
         this.totalSubs = totalSubs;
         this.totalSubsOneAndTwo = totalSubsOneAndTwo;
     }
 
+    
      
 
     public String getTypeA() {
@@ -50,14 +51,14 @@ public class publicService extends Company implements Taxable{
 
     @Override
     public String toString() {
-        return "publicService{" + "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + "typeA=" + typeA + ", totalSubs=" + totalSubs + ", totalSubsOneAndTwo=" + totalSubsOneAndTwo + '}';
-    }
-
+        return  "name=" + super.getName() + ", nit=" + super.getNit() + ", adress=" + super.getAdress() + ", phone=" + super.getPhone() + ", employees=" + super.getEmployees() + ", valuesAssets=" + super.getValuesAssets() + ", constitutionDate=" + super.getConstitutionDate() + ", type=" + super.getType() + ", legalRepresentative=" + super.getLegalRepresentative();
+                }
     /**
      *
      * @return
      */
-    @Override
+    
+               
     public double calculateTaxes() {
         double proCultura = 0.0;
 
