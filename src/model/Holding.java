@@ -17,13 +17,49 @@ public class Holding {
     
     private String name;
     private long nit;
+    private Building bu;
     
     private ArrayList<Company> com;
 
-    public Holding(String name, long nit) {
+    public Holding(String name, long nit, Building bu) {
         this.name = name;
         this.nit = nit;
+        this.bu = bu;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getNit() {
+        return nit;
+    }
+
+    public void setNit(long nit) {
+        this.nit = nit;
+    }
+
+    public Building getBu() {
+        return bu;
+    }
+
+    public void setBu(Building bu) {
+        this.bu = bu;
+    }
+
+    public ArrayList<Company> getCom() {
+        return com;
+    }
+
+    public void setCom(ArrayList<Company> com) {
+        this.com = com;
+    }
+    
+     
     
     public String addCompany(Company comp){
         
@@ -41,8 +77,17 @@ public class Holding {
         return msj;
     }
     
-    
+    public void addCompanyPolls(Company companyName, Poll polls){
 
+        com.add(companyName);
+        ((ServiceCompany)companyName).addPolls(polls);
+    }
+    
+    public void addCompanyProducts(Company companyName,Product p){
+
+        com.add(companyName);
+        ((ManufacturingCompany) companyName).addProduct(p);
+    }
     @Override
     public String toString() {
         return "Holding{" + "name=" + name + ", nit=" + nit + ", companies=" + companies()+ '}';
