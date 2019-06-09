@@ -1,122 +1,131 @@
+
 package model;
 
-public abstract class Company{
+/**
+ *
+ * @author diegoandrestorres
+ */
+public abstract class Company {
 
-    public final static char AGRICUL_HUNT_SILV_FISH = 'A';
-    public static final char EXPLOT_MINES_CAN = 'B';
-    public static final char INDUSTRY_MANU = 'C';
-    public static final char ELECTRICITY_GAS_STEAM = 'D';
+    public static final char AGRI_SILVI_HUNT_FISH = 'A';
+    public static final char EXPLO_MINES_OUARRIES = 'B';
+    public static final char MANUFACTURING = 'C';
+    public static final char ELEC_GAS_STEAM = 'D';
     public static final char CONSTRUCTION = 'E';
-    public static final char COMERCY_MM  = 'F';
-    public static final char TRANSPORTATION_A_C = 'G';
-    public static final char SECURE_INMU_COM = 'H';
-    public static final char SOCI_COM = 'I';
+    public static final char COMMERCE_MM = 'F';
+    public static final char TRANS_STORAGE_COMU = 'G';
+    public static final char EST_INSU_ESTATE_SERV = 'H';
+    public static final char SOCIAL_COMUNALS = 'I';
 
-    private  String nameComercy;
-    private String nit;
-    private String addres;
-    private String phoneContact;
-    private int employeerCant;
-    private double amountActives;
-    private String dateOfInscription;
-    private char typeOrganization;
-    private String legalName;
-    private Building build;
+    protected String name;
+    protected String nit;
+    protected String adress;
+    protected long phone;
+    protected int employees;
+    protected double valuesAssets;
+    protected String constitutionDate;
+    protected char type;
+    protected String legalRepresentative;
+    
+    protected Building build;
 
-    public Company(String nameComercy,String nit, String addres,String phoneContact, int employeerCant, double amountActives, String dateOfInscription, char typeOrganization, String legalName,Building build){
-      this.nameComercy = nameComercy;
-      this.nit = nit;
-      this.addres = addres;
-      this.phoneContact = phoneContact;
-      this.employeerCant = employeerCant;
-      this.amountActives = amountActives;
-      this.dateOfInscription = dateOfInscription;
-      this.typeOrganization = typeOrganization;
-      this.legalName = legalName;
-      this.build = build;
+    public Company(String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+        this.name = name;
+        this.nit = nit;
+        this.adress = adress;
+        this.phone = phone;
+        this.employees = employees;
+        this.valuesAssets = valuesAssets;
+        this.constitutionDate = constitutionDate;
+        this.type = type;
+        this.legalRepresentative = legalRepresentative;
+        this.build = build;
     }
 
-    public Building getBuilding1(){
-      return build;
+   
+    public String getName() {
+        return name;
     }
 
-    public void setBuilding1(Building build){
-      this.build = build;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDateOfInscription(){
-      return dateOfInscription;
+    public String getNit() {
+        return nit;
     }
 
-    public void setDateOfInscription(String dateOfInscription){
-      this.dateOfInscription = dateOfInscription;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
-    public String getNameComercy(){
-      return nameComercy;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setNameComercy(String nameComercy){
-      this.nameComercy = nameComercy;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
-    public String getNit(){
-      return nit;
+    public long getPhone() {
+        return phone;
     }
 
-    public void setNit(String nit){
-      this.nit = nit;
+    public void setPhone(long phone) {
+        this.phone = phone;
     }
 
-    public String getAddres(){
-      return addres;
+    public int getEmployees() {
+        return employees;
     }
 
-    public void setAddres(String addres){
-      this.addres = addres;
+    public void setEmployees(int employees) {
+        this.employees = employees;
     }
 
-    public String getPhoneContact(){
-      return phoneContact;
+    public double getValuesAssets() {
+        return valuesAssets;
     }
 
-    public void setPhoneContact(String phoneContact){
-      this.phoneContact = phoneContact;
+    public void setValuesAssets(double valuesAssets) {
+        this.valuesAssets = valuesAssets;
     }
 
-    public int getEmployeerCant(){
-      return employeerCant;
+    public String getConstitutionDate() {
+        return constitutionDate;
     }
 
-    public void setEmployeerCant(int employeerCant){
-      this.employeerCant = employeerCant;
+    public void setConstitutionDate(String constitutionDate) {
+        this.constitutionDate = constitutionDate;
     }
 
-    public double getAmountActives(){
-      return amountActives;
+    public char getType() {
+        return type;
     }
 
-    public void setAmountActives(double amountActives){
-      this.amountActives = amountActives;
+    public void setType(char type) {
+        this.type = type;
     }
 
-    public char getTypeOrganization(){
-      return typeOrganization;
+    public String getLegalRepresentative() {
+        return legalRepresentative;
     }
 
-    public void setTypeOrganization(char typeOrganization){
-      this.typeOrganization = typeOrganization;
+    public void setLegalRepresentative(String legalRepresentative) {
+        this.legalRepresentative = legalRepresentative;
     }
 
-    public String getLegalName(){
-      return legalName;
+    public Building getBuild() {
+        return build;
     }
 
-    public void setLegalName(String legalName){
-      this.legalName = legalName;
+    public void setBuild(Building build) {
+        this.build = build;
     }
-
-    public abstract String toString();
-
-
+    
+    
+    
+    
+    
+    public abstract String toString();  
 }

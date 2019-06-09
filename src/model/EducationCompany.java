@@ -11,7 +11,7 @@ public class EducationCompany extends ServiceCompany implements Taxable{
     private int quantity;
     private int amountStudentsStratum1and2;
 
-    public EducationCompany(String name, String nit, String adress, String phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build, int noMen, int acreeditedYear, int positionSaber11, int positionSaberPro, String principalName, String educationSector, int quantity, int amountStudentsStratum1and2 ) {
+    public EducationCompany(String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build, int noMen, int acreeditedYear, int positionSaber11, int positionSaberPro, String principalName, String educationSector, int quantity, int amountStudentsStratum1and2 ) {
         super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
         this.noMen = noMen;
         this.acreeditedYear = acreeditedYear;

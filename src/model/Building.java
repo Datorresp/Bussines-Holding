@@ -1,224 +1,355 @@
+
 package model;
 
-public class Building{
+/**
+ *
+ * @author diegoandrestorres
+ */
+public class Building {
+    
+    private int buildingNumber;
+    
+    private Cubicle[][] cubicles;
 
-    private Cubicle[][] tower;
-    private int numberBuilding;
-
-    public void inicializatedCub(){
-    for(int i = 0; i < tower.length;i++){
-            for(int j = 0; j < tower[0].length;j++){
-                    tower[i][j] = new Cubicle("","68" + i + j,"","",false);
-            }
-    }
-    }
-
-
-    public Building(int numberBuilding){
-    this.numberBuilding = numberBuilding;
-    tower = new Cubicle[numberBuilding][20];
-    inicializatedCub();
+    public Building(int buildingNumber) {
+        this.buildingNumber = buildingNumber;
+        
+        cubicles = new Cubicle[buildingNumber][20];
     }
 
-    public Cubicle[][] getEmployeer(){
-            return tower;
+    public int getBuildingNumber() {
+        return buildingNumber;
     }
 
-    public void setEmployeer(Cubicle[][] tower){
-            this.tower = tower;
+    public void setBuildingNumber(int buildingNumber) {
+        this.buildingNumber = buildingNumber;
     }
 
-    public void assigTheEmploInCub(String nameEm, String positionEm, String emailEm){
+    public Cubicle[][] getCubicles() {
+        return cubicles;
+    }
 
-    boolean t = false;
-            for(int i = 0; i < tower.length && !t;i++){
-                    for(int k = 0; k < tower[0].length && !t;k++){
-                            if(tower[i][k].getDisponibility() == false){
-                                    tower[i][k].setNameEmployeer(nameEm);
-                                    tower[i][k].setPosition(positionEm);
-                                    tower[i][k].setEmail(emailEm);
-                                    tower[i][k].setDisponibility(true);
-                                    t = true;
-                            }
+    public void setCubicles(Cubicle[][] cubicles) {
+        this.cubicles = cubicles;
+    }
+    
+    public void addEmployee(String employeeName, String employeePosition, String employeeEmail){
+
+	boolean found = false;
+            for(int i = 0; i < cubicles.length && !found;i++){
+                   
+                for(int j = 0; j < cubicles[0].length && !found;j++){
+                        
+                    if(cubicles[i][j].isDisponibility()== false){
+                            
+               		cubicles[i][j].setEmployeeName(employeeName);
+                               
+                        cubicles[i][j].setPosition(employeePosition);
+                                
+			cubicles[i][j].setEmail(employeeEmail);
+                        
+			cubicles[i][j].setDisponibility(true);                                
+                        
+			found = true;
+                                
+			}
                     }
-            }
+                }
     }
+    
+    public String routeL(String employeeName){
+        
+        String msj="";
+        int j = 0;
+        boolean finalL = false;
+        
+        for (int i = 0; i < cubicles.length; i++) {
+            if (cubicles[i][j].getEmployeeName().equals(employeeName)) {
+                
+                msj += "La extencion del empleado es: "+cubicles[i][j].getExtention();
+            }
+            finalL = true;
+        }
+        
+        if (finalL == true) {
+            
+            
+            for (int k = 0; k < cubicles[0].length; k++) {
+                
+                if (cubicles[j][k].getEmployeeName().equals(employeeName)) {
+                    
+                    msj += "La extencion del empleado es: " + cubicles[j][k].getExtention();
+                }
+            }
+        }
+        return msj;
+    }
+    
+    public String routeZ (String employeeName){
 
-    public String recorridoL(String nameEmpleado){
-    String msj = "";
-    int k = 0;
-    boolean abajoL = false;
+        String msj = "";
 
-    for(int i = 0;  i < tower.length; i++){
-        if(tower[i][k].getNameEmployeer().equals(nameEmpleado)){
+        for (int i =0; i < cubicles[0].length; i++){
 
-          msj = "El empleado es:" + tower[i][k].getExtension();
-          }
-        abajoL = true;
-      }
+            if (cubicles[0][i].getEmployeeName().equals(employeeName)){
 
-      if(abajoL == true){
-        for(int m = 1; m  < tower[0].length; m++){
-          if(tower[k][m].getNameEmployeer().equals(nameEmpleado)){
+              msj = "La extencion delempleado es: " + cubicles[0][i].getExtention();
 
-                msj = "El empleado es:" + tower[k][m].getExtension();
+            }
         }
 
+        for (int j = 1; j < cubicles[0].length; j++){
 
-      }
+              if(cubicles[j][cubicles[0].length-j].getEmployeeName().equals(employeeName)){
+
+                  msj = "La extencion del empleado es: " + cubicles[j][cubicles[0].length-j].getExtention();
+              }
+
+        }
+
+        for(int k= cubicles[0].length -1; k >0 ; k--){
+
+          if(cubicles[cubicles.length][k].getEmployeeName().equals(employeeName)){
+
+            msj = "la extencion del empleado es: " + cubicles[cubicles.length][k].getExtention();
+          }
+        }
+        return msj;
+    }
+    
+    public String routeO(String employeeName){
+        
+        String msj = "";
+
+        for(int i = 0; i < cubicles[0].length;i++){
+            
+          if(cubicles[0][i].getEmployeeName().equals(employeeName)){
+              
+            msj += "la extencion del empleado es: " + cubicles[0][i].getExtention();
+            
+          }
+          
+        }
+
+        for(int j = cubicles[0].length-1; j > 0; j--){
+            
+          if(cubicles[cubicles.length][j].getPosition().equals(employeeName)){
+              
+            msj += "la extencion del empleado es: " + cubicles[cubicles.length][j].getExtention();
+            
+          }
+          
+        }
+
+        for(int k = 0; k < cubicles.length; k++){
+            
+         if(cubicles[k][0].getEmployeeName().equals(employeeName)){
+             
+           msj += "la extencion del empleado es: " +cubicles[k][0].getExtention();
+           
+         }else if(cubicles[k][cubicles[0].length].getEmployeeName().equals(employeeName)){
+             
+           msj += "la extencion del empleado es: " +cubicles[k][cubicles[0].length].getExtention();
+           
+         }
+         
+        }
+        return msj;
 
     }
+    
+    public String routeE(String employeeName){
+        
+        String msj = "";
 
-    return msj;
-
-
+        for(int i = 0; i < cubicles.length;i++){
+            
+            if(i % 2 == 0){
+                
+                for(int j = 0; j < cubicles[0].length;j++){
+                
+                    if(cubicles[i][j].getEmployeeName().equals(employeeName)){
+                    
+                        msj += "la extencion del empleado es: " + cubicles[i][j].getExtention();
+                    }
+                }
+            }else if(i % 2 != 0){
+                
+                for(int k = cubicles[0].length-1; k > 0; k--){
+                    
+                    if(cubicles[i][k].getEmployeeName().equals(employeeName)){
+                        
+                        msj += "la extencion del empleado es: " + cubicles[i][k].getExtention();
+                    }
+                }
+            }
+        }
+        return msj;
     }
+    
+    public String spiralXColumn(String position){
+        
+        
+	String msj = "";
+	boolean downRight = false;
+	boolean lastUp = false;
+	boolean upLeft = false;
+	int adder = 0;
+	int receiver = 0;
 
+	for(int i = 0; i < cubicles.length;i++){
+		
+		for(int j = 0; i < cubicles[0].length-adder;  j++){
+                    
+                    if(cubicles[j][i].getPosition().equals(position)){
+                        
+                        msj += cubicles[j][i].getEmail();
+                    }
+                    
+                    downRight = true;
+                }
+	
+                if(downRight == true){
+                    
+                    for(int k = 1; k < cubicles[0].length-adder; k++){
+                        
+                        if(cubicles[cubicles.length][k].getPosition().equals(position)){
+                            
+                            msj += cubicles[cubicles.length][k].getEmail();
+                            
+			}
+                        
+                    lastUp = true;
+                    
+                    }
+                }
 
-    public String recorridoZ(String nombreEmpleado){
+                if(lastUp == true){
+                    
+                    for(int l = cubicles.length; l > adder; l--){
 
-    String msj = "";
+                        if(cubicles[l][cubicles.length].getPosition().equals(position)){
+                            
+                            msj += cubicles[l][cubicles.length].getEmail();
+                            
+                        }
+                        
+                            upLeft = true;
+                            
+                    }
+                }
 
-    for(int i =0; i < tower.length; i++){
-        if(tower[0][i].getNameEmployeer().equals(nombreEmpleado)){
-          msj += "El empleado es:" + tower[0][i].getExtension();
+                if(upLeft == true){
+                    
+                    for(int m = cubicles.length-adder; m > receiver ; m--){
+                        
+                        if(cubicles[receiver][m].getPosition().equals(position)){
+                            
+                            msj += cubicles[receiver][m].getEmail();
+                            
+                        }
+                    }
+                }
+
+                downRight = false;
+                lastUp = false;
+                upLeft = false;
+                adder++;
+                receiver++;
+
+	}
+	return msj;
     }
-    }
+    
+    public String routeX(String employeeName){
+        
+        String msj ="";
 
-    for(int k = 1; k < tower.length;k++){
-          if(tower[k][tower.length-k].getNameEmployeer().equals(nombreEmpleado)){
-              msj += "El empleado es:" + tower[k][tower.length-k].getExtension();
-    }
-
-    }
-
-    for(int j= 1; j < tower.length; j++){
-      if(tower[tower.length-1][j].getNameEmployeer().equals(nombreEmpleado)){
-        msj += "El empleado es:" + tower[tower.length][j].getExtension();
-      }
-    }
-    return msj;
-    }
-
-
-    public String espiralXfila(String nombreEmpleado){
-    String msj ="";
-
-    //Diagonal principal
-     for(int i = 0; i < tower.length;i++){
-             if(tower[i][i].getNameEmployeer().equals(nombreEmpleado)){
-                     msj += "El empleado es:" + tower[i][i].getExtension();
+        
+         for(int i = 0; i < cubicles.length;i++){
+             
+             if(cubicles[i][i].getEmployeeName().equals(employeeName)){
+                 
+                 msj += "la extencion del empleado es: " + cubicles[i][i].getExtention();
+                 
              }
-     }
+         }
 
-    //Diagonal Inversa
-      for(int k = 0; k < tower.length;k++){
-            if((tower.length % 2 == 0) || (tower.length % 2 != 0 && k != tower.length/2)){
-                    if(tower[k][tower.length-1-k].getNameEmployeer().equals(nombreEmpleado)){
-                            msj += "El empleado es:" + tower[k][tower.length-1-k].getExtension();
-                    }
+        
+          for(int j = 0; j < cubicles.length;j++){
+              
+            if((cubicles.length % 2 == 0) || (cubicles.length % 2 != 0 && j != cubicles.length/2)){
+                
+                if(cubicles[j][cubicles.length-1-j].getEmployeeName().equals(employeeName)){
+                    
+                    msj += "la extencion del empleado es: " + cubicles[j][cubicles.length-1-j].getExtention();
+                    
+               }
             }
-      }
+          }
 
-    return msj;
+        return msj;
     }
+    
+    public String espriral(String position){
+        
+        String msj = "";
+	int file1 = 0;
+	int file2 = cubicles.length-1;
+	int column1 = 0;
+	int column2 = cubicles.length-1;
 
-    public String espiralE(String nombreEmpleado){
-    String msj = "";
-    int m = 0;
+	while(file1 < file2 && column1 < column2){
 
-    for(int i = 0; i < tower.length;i+= 2){
-            for(int j = 0; j < tower.length;j++){
-                    if(m % 2 == 0){
-                            if(tower[i][j].getNameEmployeer().equals(nombreEmpleado)){
-                            msj += "El empleado es:" + tower[i][j].getExtension();
-                             }
-                            }else if(m % 2 != 0){
-                                                    if(tower[i][tower.length-j-1].getNameEmployeer().equals(nombreEmpleado)){
-                                                    msj += "El empleado es:" + tower[i][tower.length-j-1].getExtension();
-                                    }
-                            }
-                    }
-                    if(m % 2 == 0 && i < tower.length-1){
-                            if(tower[i+1][tower.length-1].getNameEmployeer().equals(nombreEmpleado)){
-                                    msj += "El empleado es:" + tower[i+1][tower.length-1].getExtension();
-                            }
-                    }else{
-                            if(tower[i+1][0].getNameEmployeer().equals(nombreEmpleado)){
-                                    msj += "El empleado es:" + tower[i+1][0].getExtension();
-                            }
-                    }
-                    m++;
+            for(int i = file1 ; i < file2 ;i++){
+                    
+                if(cubicles[i][column1].getPosition().equals(position)){
+                            
+                    msj += "la extencion del empleado es: " + cubicles[i][column1].getEmail();
+                        
+                }
             }
-                    return msj;
-    }
 
-    public String espiralO(String nombreEmpleado){
-    String msj = "";
-
-    for(int i = 0; i < tower.length;i++){
-      if(tower[0][i].getNameEmployeer().equals(nombreEmpleado)){
-        msj += "El empleado es:" + tower[0][i].getExtension();
-      }
-    }
-
-    for(int k = 0; k > tower[0].length; k++){
-      if(tower[tower.length-1][k].getNameEmployeer().equals(nombreEmpleado)){
-        msj += "El empleado es:" + tower[tower.length][k].getExtension();
-      }
-    }
-
-    for(int o = 0; o < tower.length;o++){
-     if(tower[o][0].getNameEmployeer().equals(nombreEmpleado)){
-       msj += "El empleado es:" +tower[o][0].getExtension();
-     }else if(tower[o][tower.length].getNameEmployeer().equals(nombreEmpleado)){
-       msj += "El empleado es:" +tower[o][tower.length].getExtension();
-     }
-    }
-    return msj;
-
-    }
-
-    public String espiral(String cargo){
-
-            String msj = "";
-            int fila1 = 0;
-            int fila2 = tower.length-1;
-            int col1 = 0;
-            int col2 = tower.length-1;
-
-            while(fila1 < fila2 && col1 < col2){
-
-                    for(int i = fila1; i < fila2;i++){
-                            if(tower[i][col1].getPosition().equals(cargo)){
-                                    msj += "El empleado:" + tower[i][col1].getEmail();
-                            }
-                    }
-
-                    col1++;
-                    for(int i = col1; i < col2;i++){
-                            if(tower[fila2][i].getPosition().equals(cargo)){
-                                    msj += "El empleado:" + tower[fila2][i].getEmail();
-                            }
-                    }
-                    fila2--;
-
-                    for(int i = fila2; i >= fila1 ;i--){
-                            if(tower[i][col2].getPosition().equals(cargo)){
-                                    msj += "El empleado:" + tower[i][col2].getEmail();
-                            }
-                    }
-                    col2--;
-
-                    for(int i = col2; i >= col1;i--){
-                            if(tower[fila1][i].getPosition().equals(cargo)){
-                                    msj += "El empleado:" + tower[fila1][i].getEmail();
-                            }
-                    }
-                    fila1++;
-
+            column1++;
+            
+            for(int j = column1 ; j < column2 ; j++){
+			
+                if(cubicles[file2][j].getPosition().equals(position)){
+                    
+                    msj += "la extencion del empleado es: " + cubicles[file2][j].getEmail();
+		}
             }
-     return msj;
-    }
+		
+            file2--;
 
+		
+            for(int k = file2; k >= file1 ; k--){
+		
+                if(cubicles[k][column2].getPosition().equals(position)){
+		
+                    msj += "la extencion del empleado es: " + cubicles[k][column2].getEmail();
+	
+                }
+		
+            }
+		
+            column2--;
+
+		
+            for(int l = column2 ; l >= column1 ; l--){
+			
+                if(cubicles[file1][l].getPosition().equals(position)){
+				
+                    msj += "la extencion del empleado es: " + cubicles[file1][l].getEmail();
+			
+                }
+		
+            }
+		
+            file1++;
+
+	}
+        return msj;
+    }
+        
 }

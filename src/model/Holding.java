@@ -1,266 +1,286 @@
+
 package model;
+
 import java.util.ArrayList;
 
-public class Holding{
+/**
+ *
+ * @author diegoandrestorres
+ */
+public class Holding {
+    
+    private String name;
+    private long nit;
+    private Building bu;
+    
+    private ArrayList<Company> com;
 
-    //Relaciones
-
-    private ArrayList<Company> companies;
-    private Building principalOfThis;
-
-    public Holding(Building principalOfThis){
-      this.principalOfThis = principalOfThis;
-    companies = new ArrayList<Company>();
+    public Holding(String name, long nit, Building bu) {
+        this.name = name;
+        this.nit = nit;
+        this.bu = bu;
     }
 
-    public Building getBuilding(){
-      return principalOfThis;
+    public String getName() {
+        return name;
     }
 
-    public void setBuilding(Building principalOfThis){
-      this.principalOfThis = principalOfThis;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void addCompany(Company m){
-
-      companies.add(m);
-
+    public long getNit() {
+        return nit;
     }
 
+    public void setNit(long nit) {
+        this.nit = nit;
+    }
+
+    public Building getBu() {
+        return bu;
+    }
+
+    public void setBu(Building bu) {
+        this.bu = bu;
+    }
+
+    public ArrayList<Company> getCom() {
+        return com;
+    }
+
+    public void setCom(ArrayList<Company> com) {
+        this.com = com;
+    }
+    
+     
+    
+    public String addCompany(Company comp){
+        
+        String msj = " ";
+        boolean found = false;
+        
+        for (int i = 0; i < com.size() && !found; i++) {
+            
+            if (com.get(i) == null) {
+                
+                com.add(comp);
+                msj += " Se ha creado la compañia" + "\n";
+            }
+        }
+        return msj;
+    }
+    
+    public void addCompanyPolls(String companyName,Company company, Poll polls){
+
+        for (int i = 0; i < com.size(); i++) {
+            
+            if (com.get(i).name.equals(companyName)) {
+                
+                company = com.get(i);
+                ((ServiceCompany)company).addPolls(polls);
+            }
+        }
+        
+    }
+    
+    public void addCompanyProducts(String companyName, Company company,Product p){
+
+        for (int i = 0; i < com.size(); i++) {
+            
+            if (com.get(i).name.equals(companyName)) {
+                
+                company = com.get(i);
+                ((ManufacturingCompany) company).addProduct(p);
+            }
+        }
+        
+    }
+    @Override
+    public String toString() {
+        return "Holding{" + "name=" + name + ", nit=" + nit + ", companies=" + showCompanies()+ '}';
+    }
+    
+    public String showCompanies(){
+        
+        String msj = " ";
+        
+        for (int i = 0; i < com.size(); i++) {
+            
+            msj= com.get(i).toString();
+        }
+        
+        return msj;
+    }
+    
+
+    public String comaniesNames(){
+        
+        String msj = "";
+
+	for(int i = 0; i < com.size();i++){
+
+            if(com.get(i) instanceof ServiceCompany){
+
+                 msj += com.get(i).getName();
+
+            }
+        }
+
+        return msj;
+
+    }
     public String showInfo(){
-    String msj = "";
+        String msj = "";
 
-    for(int i = 0; i < companies.size(); i++){
+            for(int i = 0; i < com.size(); i++){
 
-    msj += companies.get(i).toString();
+            msj += com.get(i).toString();
 
+            }
+        return msj;
     }
-    return msj;
+    
+    public String Products  (String nombre){
+        
+        String msj = "";
+
+        for(int i = 0; i < com.size();i++){
+
+             if(com.get(i) instanceof ManufacturingCompany){
+
+                
+                 if(com.get(i).getName().equals(nombre)){
+
+                     msj += com.get(i).toString();
+
+               }
+           }
+       }
+        return msj;
+   }
+    
+    public void addEmployee(String companyName, String employeeName, String employeePosition, String employeeEmail){
+        
+        for(int i = 0; i < com.size();i++){
+
+            if(companyName.equals(com.get(i).getName())){
+              
+                if(com.get(i).getBuild().getCubicles() !=null){
+                    
+                    com.get(i).getBuild().addEmployee(employeeName,employeePosition,employeeEmail);
+                }
+            }
+        }
     }
+    
+    public void addBuildingToCompany(String CompanyName,Building buildingNumber){
 
-
-    public void addCompanyProducts(Company k,ArrayList<Product> l){
-
-      companies.add(k);
-      ((ManufacturingCompany) k).addProduct(l);
-
-
-    }
-
-    public void addCompanyWithPolls(Company k, ArrayList<Poll> polls){
-
-    companies.add(k);
-    ((ServiceCompany)k).addPolls(polls);
-
-
-    }
-
-    public String getCompaniesNames(){
-      String msj = "";
-
-            for(int i = 0; i < companies.size();i++){
-
-            if(companies.get(i) instanceof ServiceCompany){
-
-            msj += companies.get(i).getNameComercy();
-
+        for(int i = 0; i < com.size();i++){
+            
+          if(com.get(i).getName().equals(CompanyName)){
+              
+            if(com.get(i).getBuild().getCubicles()== null){
+                
+                com.get(i).setBuild(buildingNumber);
+            }
           }
-
-
-      }
-
-    return msj;
-
-    }
-
-    public String getCompanyWithProducts(String nombre){
-    String msj = "";
-
-    for(int i = 0; i < companies.size();i++){
-
-    if(companies.get(i) instanceof ManufacturingCompany){
-
-      if(companies.get(i).getNameComercy().equals(nombre)){
-
-    msj += ((ManufacturingCompany)companies.get(i)).getInformation();
-
-    }
-    }
-
-
-    }
-    return msj;
-    }
-
-    public String getCompanyWithPolls(String nombre1){
-    String msj = "";
-
-    for(int i = 0; i < companies.size();i++){
-
-    if(companies.get(i) instanceof ServiceCompany){
-      if(companies.get(i).getNameComercy().equals(nombre1)){
-
-        msj += ((ServiceCompany) companies.get(i)).getInfor();
-
-      }
-
-    }
-
-    }
-
-    return msj;
-
-    }
-
-    public ArrayList<Product> getProductWithCompany(String nombre){
-
-    ArrayList<Product> m = null;
-
-      for(int i = 0; i < companies.size();i++){
-
-    if(companies.get(i) instanceof ManufacturingCompany){
-
-      if(companies.get(i).getNameComercy().equals(nombre)){
-
-
-        m =  ((ManufacturingCompany)companies.get(i)).getProducts();
-
-    }
-
-      }
-    }
-    return m;
-    }
-
-    public ArrayList<Poll> getPollsWithCompany(String nombre1){
-
-    ArrayList<Poll> k = null;
-
-    for(int i = 0; i < companies.size();i++){
-
-    if(companies.get(i) instanceof ServiceCompany){
-      if(companies.get(i).getNameComercy().equals(nombre1)){
-
-        k = ((ServiceCompany)companies.get(i)).getPolls();
-
-      }
-
-    }
-
-    }
-
-    return k;
-
-    }
-
-    public void addEmployeerToCubicules(String nameCom,String nameEm,String positionEm,String emailEm){
-
-    for(int i = 0; i < companies.size();i++){
-      if(nameCom.equals(companies.get(i).getNameComercy())){
-        if(companies.get(i).getBuilding1().getEmployeer() !=null){
-          companies.get(i).getBuilding1().assigTheEmploInCub(nameEm,positionEm,emailEm);
         }
-      }
-    }
+    }  
+    
+    public String routeL(String comapanyName,String employeeName){
+        String msj = "";
 
-    }
+        for(int i = 0; i < com.size();i++){
+            if(com.get(i).getName().equals(comapanyName)){
 
-    public void addBuildingToCompany(String nameCom,Building numberPisos){
+            msj += com.get(i).getBuild().routeL(employeeName);
 
-    for(int i = 0; i < companies.size();i++){
-      if(companies.get(i).getNameComercy().equals(nameCom)){
-        if(companies.get(i).getBuilding1().getEmployeer() == null){
-            companies.get(i).setBuilding1(numberPisos);
+            }
+
         }
-      }
-
+        return msj;
     }
+    
+    public String routeZ(String comapanyName,String employeeName){
+        
+        String msj = "";
 
+            for(int i = 0; i < com.size();i++){
+                
+                if(com.get(i).getName().equals(comapanyName)){
+
+                    msj += com.get(i).getBuild().routeZ(employeeName);
+
+                }
+
+            }
+            return msj;
     }
+    
+    public String routeO (String companyName,String employeeName){
+        String msj = "";
 
-    public String showBuildingL(String nombre3,String nombreEmpleado){
-    String msj = "";
+        for(int i = 0; i < com.size();i++){
+            if(com.get(i).getName().equals(companyName)){
 
-    for(int i = 0; i < companies.size();i++){
-    if(companies.get(i).getNameComercy().equals(nombre3)){
+                msj += com.get(i).getBuild().routeO(employeeName);
 
-    msj += companies.get(i).getBuilding1().recorridoL(nombreEmpleado);
+            }
 
+        }
+        
+        return msj;
     }
+    
+    public String routeE(String companyName,String employeeName){
+        String msj = "";
 
+        for(int i = 0; i < com.size();i++){
+        
+            if(com.get(i).getName().equals(companyName)){
+
+        
+                msj += com.get(i).getBuild().routeE(employeeName);
+
+        
+            }
+
+        }
+        return msj;
     }
-    return msj;
+    
+    public String espiral(String companyName,String employeeName){
+
+        String msj = "";
+
+
+        for(int i = 0; i < com.size();i++){
+
+            if(com.get(i).getName().equals(companyName)){
+
+
+                msj += com.get(i).getBuild().espriral(employeeName);
+
+            }
+
+        }
+        return msj;
     }
+    
+    public String routeX(String companyName,String employeeName){
 
-    public String showBuildingZ(String nombre3,String nombreEmpleado){
-    String msj = "";
+        String msj = "";
 
-    for(int i = 0; i < companies.size();i++){
-    if(companies.get(i).getNameComercy().equals(nombre3)){
 
-    msj += companies.get(i).getBuilding1().recorridoZ(nombreEmpleado);
+        for(int i = 0; i < com.size();i++){
 
+            if(com.get(i).getName().equals(companyName)){
+
+                msj += com.get(i).getBuild().routeX(employeeName);
+            }
+
+        }
+        return msj;
     }
-
-    }
-    return msj;
-    }
-
-    public String showBuildingEspiral(String nombre3,String cargo1){
-    String msj = "";
-
-    for(int i = 0; i < companies.size();i++){
-    if(companies.get(i).getNameComercy().equals(nombre3)){
-
-    msj += companies.get(i).getBuilding1().espiral(cargo1);
-
-    }
-
-    }
-    return msj;
-    }
-
-    public String showBuildingE(String nombre3,String nombreEmpleado){
-    String msj = "";
-
-    for(int i = 0; i < companies.size();i++){
-    if(companies.get(i).getNameComercy().equals(nombre3)){
-
-    msj += companies.get(i).getBuilding1().espiralE(nombreEmpleado);
-
-    }
-
-    }
-    return msj;
-    }
-
-    public String showBuildingO(String nombre3,String nombreEmpleado){
-    String msj = "";
-
-    for(int i = 0; i < companies.size();i++){
-    if(companies.get(i).getNameComercy().equals(nombre3)){
-
-    msj += companies.get(i).getBuilding1().espiralO(nombreEmpleado);
-
-    }
-
-    }
-    return msj;
-    }
-
-    public String showBuildingX(String nombre3,String nombreEmpleado){
-    String msj = "";
-
-    for(int i = 0; i < companies.size();i++){
-    if(companies.get(i).getNameComercy().equals(nombre3)){
-
-    msj += companies.get(i).getBuilding1().espiralXfila(nombreEmpleado);
-
-    }
-
-    }
-    return msj;
-    }
-
-
 }

@@ -1,63 +1,68 @@
+
 package model;
 
-public class Cubicle{
-
-    private String nameEmployeer;
-    private String extension;
+/**
+ *
+ * @author diegoandrestorres
+ */
+public class Cubicle {
+    
+    
+    private String EmployeeName;
+    private long extention;
     private String position;
     private String email;
     private boolean disponibility;
 
-    public Cubicle(String nameEmployeer,String extension,String position, String email,boolean disponibility){
-
-    this.nameEmployeer = nameEmployeer;
-    this.extension = extension;
-    this.position = position;
-    this.email = email;
-    this.disponibility = disponibility;
-
+    public Cubicle(String EmployeeName, long extention, String position, String email, boolean disponibility) {
+        this.EmployeeName = EmployeeName;
+        this.extention = extention;
+        this.position = position;
+        this.email = email;
+        this.disponibility = disponibility;
     }
 
-    public String getNameEmployeer(){
-      return nameEmployeer;
+    public String getEmployeeName() {
+        return EmployeeName;
     }
 
-    public void setNameEmployeer(String nameEmployeer){
-      this.nameEmployeer = nameEmployeer;
+    public void setEmployeeName(String EmployeeName) {
+        this.EmployeeName = EmployeeName;
     }
 
-    public String getExtension(){
-      return extension;
+    public long getExtention() {
+        return extention;
     }
 
-    public void setExtension(String extension){
-      this.extension = extension;
+    public void setExtention(long extention) {
+        this.extention = extention;
     }
 
-    public String getPosition(){
-      return position;
+    public String getPosition() {
+        return position;
     }
 
-    public void setPosition(String position){
-      this.position = position;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    public String getEmail(){
-      return email;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmail(String email){
-      this.email = email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public boolean getDisponibility(){
-      return disponibility;
+    public boolean isDisponibility() {
+        return disponibility;
     }
 
-    public void setDisponibility(boolean disponibility){
-      this.disponibility = disponibility;
+    public void setDisponibility(boolean disponibility) {
+        this.disponibility = disponibility;
     }
-
- }
-
-
+    
+    
+    
+    
+}
