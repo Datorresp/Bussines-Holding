@@ -15,12 +15,14 @@ public class publicService extends Company implements Taxable{
      private int totalSubs;
      private int totalSubsOneAndTwo;
 
-    public publicService(String typeA, int totalSubs, int totalSubsOneAndTwo, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative) {
-        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative);
+    public publicService(String typeA, int totalSubs, int totalSubsOneAndTwo, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
         this.typeA = typeA;
         this.totalSubs = totalSubs;
         this.totalSubsOneAndTwo = totalSubsOneAndTwo;
     }
+
+     
 
     public String getTypeA() {
         return typeA;

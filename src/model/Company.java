@@ -26,8 +26,10 @@ public abstract class Company {
     protected String constitutionDate;
     protected char type;
     protected String legalRepresentative;
+    
+    protected Building build;
 
-    public Company(String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative) {
+    public Company(String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
         this.name = name;
         this.nit = nit;
         this.adress = adress;
@@ -37,8 +39,10 @@ public abstract class Company {
         this.constitutionDate = constitutionDate;
         this.type = type;
         this.legalRepresentative = legalRepresentative;
+        this.build = build;
     }
 
+   
     public String getName() {
         return name;
     }
@@ -110,8 +114,18 @@ public abstract class Company {
     public void setLegalRepresentative(String legalRepresentative) {
         this.legalRepresentative = legalRepresentative;
     }
+
+    public Building getBuild() {
+        return build;
+    }
+
+    public void setBuild(Building build) {
+        this.build = build;
+    }
     
-    public abstract String toString();
     
     
+    
+    
+    public abstract String toString();  
 }

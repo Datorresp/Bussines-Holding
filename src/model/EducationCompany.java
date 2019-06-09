@@ -11,8 +11,8 @@ public class EducationCompany extends ServiceCompany implements Taxable{
     private int quantity;
     private int amountStudentsStratum1and2;
 
-    public EducationCompany(int noMen, int acreeditedYear, int positionSaber11, int positionSaberPro, String principalName, String educationSector, int quantity, int amountStudentsStratum1and2, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative) {
-        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative);
+    public EducationCompany(int noMen, int acreeditedYear, int positionSaber11, int positionSaberPro, String principalName, String educationSector, int quantity, int amountStudentsStratum1and2, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
         this.noMen = noMen;
         this.acreeditedYear = acreeditedYear;
         this.positionSaber11 = positionSaber11;
@@ -22,6 +22,8 @@ public class EducationCompany extends ServiceCompany implements Taxable{
         this.quantity = quantity;
         this.amountStudentsStratum1and2 = amountStudentsStratum1and2;
     }
+
+    
 
     public int getNoMen() {
         return noMen;
@@ -106,8 +108,10 @@ public class EducationCompany extends ServiceCompany implements Taxable{
 
     @Override
     public String toString() {
-        return "EducationCompany{" + "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + "noMen=" + noMen + ", acreeditedYear=" + acreeditedYear + ", positionSaber11=" + positionSaber11 + ", positionSaberPro=" + positionSaberPro + ", principalName=" + principalName + ", educationSector=" + educationSector + ", quantity=" + quantity + ", amountStudentsStratum1and2=" + amountStudentsStratum1and2 + '}';
+        return "EducationCompany{" + super.toString() +"noMen=" + noMen + ", acreeditedYear=" + acreeditedYear + ", positionSaber11=" + positionSaber11 + ", positionSaberPro=" + positionSaberPro + ", principalName=" + principalName + ", educationSector=" + educationSector + ", quantity=" + quantity + ", amountStudentsStratum1and2=" + amountStudentsStratum1and2 + '}';
     }
+
+     
     
     
     

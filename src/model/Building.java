@@ -24,8 +24,38 @@ public class Building {
     public void setBuildingNumber(int buildingNumber) {
         this.buildingNumber = buildingNumber;
     }
+
+    public Cubicle[][] getCubicles() {
+        return cubicles;
+    }
+
+    public void setCubicles(Cubicle[][] cubicles) {
+        this.cubicles = cubicles;
+    }
     
-    
+    public void addEmployee(String employeeName, String employeePosition, String employeeEmail){
+
+	boolean found = false;
+            for(int i = 0; i < cubicles.length && !found;i++){
+                   
+                for(int j = 0; j < cubicles[0].length && !found;j++){
+                        
+                    if(cubicles[i][j].isDisponibility()== false){
+                            
+               		cubicles[i][j].setEmployeeName(employeeName);
+                               
+                        cubicles[i][j].setPosition(employeePosition);
+                                
+			cubicles[i][j].setEmail(employeeEmail);
+                        
+			cubicles[i][j].setDisponibility(true);                                
+                        
+			found = true;
+                                
+			}
+                    }
+                }
+    }
     
     public String routeL(String employeeName){
         

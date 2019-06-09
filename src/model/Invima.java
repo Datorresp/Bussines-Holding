@@ -12,15 +12,14 @@ public class Invima extends ManufacturingCompany implements Consuption{
     private String expiration;
     private char modality;
 
-    public Invima(String sanitaryRegistration, String status, String expiration, char modality, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative) {
-        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative);
+    public Invima(String sanitaryRegistration, String status, String expiration, char modality, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
         this.sanitaryRegistration = sanitaryRegistration;
         this.status = status;
         this.expiration = expiration;
         this.modality = modality;
     }
-
-    
+ 
     public String getSanitaryRegistration() {
         return sanitaryRegistration;
     }
@@ -55,8 +54,10 @@ public class Invima extends ManufacturingCompany implements Consuption{
 
     @Override
     public String toString() {
-        return "Invima{" + "Registro Sanitario=" + sanitaryRegistration + ", Estatus=" + status + ", Expiracion=" + expiration + ", modalidad=" + modality + '}';
+        return "Invima{" + super.toString() +"sanitaryRegistration=" + sanitaryRegistration + ", status=" + status + ", expiration=" + expiration + ", modality=" + modality + '}';
     }
+
+    
 
     @Override
     public int WaterXTree() {

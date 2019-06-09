@@ -10,14 +10,19 @@ public class ServiceCompany extends Company{
     
     private ArrayList<Poll> polls;
 
-    public ServiceCompany(String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative) {
-        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative);
-        polls = new ArrayList<>();
+    public ServiceCompany(String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
     }
 
-    public void addPolls(ArrayList<Poll> polls1){
+    public void addPolls(Poll polls1){
         
-        polls = polls1;
+        for (int i = 0; i < polls.size(); i++) {
+            
+            if (polls.get(i)==null) {
+                
+                polls.add(polls1);
+            }
+        }
         
     }
     

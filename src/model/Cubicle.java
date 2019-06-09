@@ -12,12 +12,14 @@ public class Cubicle {
     private long extention;
     private String position;
     private String email;
+    private boolean disponibility;
 
-    public Cubicle(String EmployeeName, long extention, String position, String email) {
+    public Cubicle(String EmployeeName, long extention, String position, String email, boolean disponibility) {
         this.EmployeeName = EmployeeName;
         this.extention = extention;
         this.position = position;
         this.email = email;
+        this.disponibility = disponibility;
     }
 
     public String getEmployeeName() {
@@ -51,5 +53,16 @@ public class Cubicle {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isDisponibility() {
+        return disponibility;
+    }
+
+    public void setDisponibility(boolean disponibility) {
+        this.disponibility = disponibility;
+    }
+    
+    
+    
     
 }

@@ -14,19 +14,20 @@ public class TechnologyCompany extends ServiceCompany implements Consuption{
     
     private ArrayList <String> services;
 
-    public TechnologyCompany(int consuptiomKilowatts, String service, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative) {
-        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative);
+    public TechnologyCompany(int consuptiomKilowatts, String service, ArrayList<String> services, String name, String nit, String adress, long phone, int employees, double valuesAssets, String constitutionDate, char type, String legalRepresentative, Building build) {
+        super(name, nit, adress, phone, employees, valuesAssets, constitutionDate, type, legalRepresentative, build);
         this.consuptiomKilowatts = consuptiomKilowatts;
         this.service = service;
+        this.services = services;
         services = new ArrayList<>();
 	services.add(CAPATATION);
         services.add(INFRASTRUCTURE);
 	services.add(SOFTWARE_DEVELOP);
         services.add(SERVICE_OF_PLATAFORM);
 	services.add(SERVICE_OF_SOFTWARE);
-	
-
     }
+
+    
 
     public int getConsuptiomKilowatts() {
         return consuptiomKilowatts;
@@ -51,13 +52,13 @@ public class TechnologyCompany extends ServiceCompany implements Consuption{
     public void setServices(ArrayList<String> services) {
         this.services = services;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "TechnologyCompany{" + "name=" + name + ", nit=" + nit + ", adress=" + adress + ", phone=" + phone + ", employees=" + employees + ", valuesAssets=" + valuesAssets + ", constitutionDate=" + constitutionDate + ", type=" + type + ", legalRepresentative=" + legalRepresentative + '}';
+        return "TechnologyCompany{" + super.toString() + "consuptiomKilowatts=" + consuptiomKilowatts + ", service=" + service + ", services=" + services + '}';
     }
+    
+    
 
     @Override
     public int WaterXTree() {

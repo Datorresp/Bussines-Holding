@@ -60,12 +60,6 @@ public class Holding {
         return msj;
     }
     
-    public void addCompanyWithPolls(Company company, ArrayList<Poll> polls){
-
-        com.add(company);
-        ((ServiceCompany)company).addPolls(polls);
-
-    }
 
     public String comaniesNames(){
         
@@ -84,7 +78,7 @@ public class Holding {
 
     }
     
-    public String Products(String nombre){
+    public String Products  (String nombre){
         
         String msj = "";
 
@@ -102,4 +96,128 @@ public class Holding {
        }
         return msj;
    }
+    
+    public void addEmployee(String companyName, String employeeName, String employeePosition, String employeeEmail){
+        
+        for(int i = 0; i < com.size();i++){
+
+            if(companyName.equals(com.get(i).getName())){
+              
+                if(com.get(i).getBuild().getCubicles() !=null){
+                    
+                    com.get(i).getBuild().addEmployee(employeeName,employeePosition,employeeEmail);
+                }
+            }
+        }
+    }
+    
+    public void addBuildingToCompany(String CompanyName,Building buildingNumber){
+
+        for(int i = 0; i < com.size();i++){
+            
+          if(com.get(i).getName().equals(CompanyName)){
+              
+            if(com.get(i).getBuild().getCubicles()== null){
+                
+                com.get(i).setBuild(buildingNumber);
+            }
+          }
+        }
+    }  
+    
+    public String routeL(String comapanyName,String employeeName){
+        String msj = "";
+
+        for(int i = 0; i < com.size();i++){
+            if(com.get(i).getName().equals(comapanyName)){
+
+            msj += com.get(i).getBuild().routeL(employeeName);
+
+            }
+
+        }
+        return msj;
+    }
+    
+    public String routeZ(String comapanyName,String employeeName){
+        
+        String msj = "";
+
+            for(int i = 0; i < com.size();i++){
+                
+                if(com.get(i).getName().equals(comapanyName)){
+
+                    msj += com.get(i).getBuild().routeZ(employeeName);
+
+                }
+
+            }
+            return msj;
+    }
+    
+    public String routeO (String companyName,String employeeName){
+        String msj = "";
+
+        for(int i = 0; i < com.size();i++){
+            if(com.get(i).getName().equals(companyName)){
+
+                msj += com.get(i).getBuild().routeO(employeeName);
+
+            }
+
+        }
+        
+        return msj;
+    }
+    
+    public String showBuildingE(String companyName,String employeeName){
+        String msj = "";
+
+        for(int i = 0; i < com.size();i++){
+        
+            if(com.get(i).getName().equals(companyName)){
+
+        
+                msj += com.get(i).getBuild().routeE(employeeName);
+
+        
+            }
+
+        }
+        return msj;
+    }
+    
+    public String espiral(String companyName,String employeeName){
+
+        String msj = "";
+
+
+        for(int i = 0; i < com.size();i++){
+
+            if(com.get(i).getName().equals(companyName)){
+
+
+                msj += com.get(i).getBuild().espriral(employeeName);
+
+            }
+
+        }
+        return msj;
+    }
+    
+    public String routeX(String companyName,String employeeName){
+
+        String msj = "";
+
+
+        for(int i = 0; i < com.size();i++){
+
+            if(com.get(i).getName().equals(companyName)){
+
+                msj += com.get(i).getBuild().routeX(employeeName);
+            }
+
+        }
+        return msj;
+    }
 }
